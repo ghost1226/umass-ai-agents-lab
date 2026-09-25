@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.DS_Store
+.slide-build/
+*.log
+.env
+*.tsbuildinfo
