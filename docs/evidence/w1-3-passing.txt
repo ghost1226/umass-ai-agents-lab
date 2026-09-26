@@ -1,0 +1,20 @@
+# W1-3 passing output (after implementation)
+# Fri Sep 25 22:40:24 EDT 2026
+
+✔ example: a pure function is easy to test (0.330584ms)
+✔ example: a fake clock is just a Date we construct (0.398375ms)
+✔ 23:59, no prior reminder -> no reminder (1.031333ms)
+✔ 00:00, no reminder for this date -> remind (0.060708ms)
+✔ 00:01, already reminded today -> no duplicate (0.043792ms)
+✔ 05:59, no reminder today -> remind (0.052208ms)
+✔ 06:00 -> no reminder (0.052333ms)
+✔ noon -> no reminder (0.036625ms)
+✔ midnight on the next date -> remind again (0.042542ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 66.037959

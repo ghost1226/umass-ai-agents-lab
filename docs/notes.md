@@ -78,3 +78,24 @@ reminder needs neither: it is runtime code inside Pi.
 
 TODO: read and use the instructor's documentation/review skill once it is
 provided; note here what it contributed. (Not present in this repo.)
+
+## Policy transition: 23:59 to 00:00
+
+The decision is `inLateNightWindow && lastRemindedDate !== today`, where
+`inLateNightWindow` is `hour >= 0 && hour < 6` and `today` comes from local
+fields (`getFullYear`/`getMonth`/`getDate`), not a UTC ISO string.
+
+- **23:59, Jan 14** → `hour = 23`, outside `[0, 6)` → no reminder. The function
+  still computes `today = "2026-01-14"`, but `remind` is false, so nothing is
+  recorded.
+- **00:00, Jan 15** → `hour = 0`, inside the window; `today = "2026-01-15"`.
+  The stored `lastRemindedDate` is `"2026-01-14"`, which differs → the reminder
+  fires and the date rolls to `"2026-01-15"`.
+- **00:01, Jan 15** → same local date, so `lastRemindedDate === today` → no
+  duplicate.
+
+The date rollover is why the comparison uses the *local calendar date* rather
+than the hour alone: at the first check at or after 00:00 the local date has
+already changed, so the new day is eligible while the previous day stays
+exhausted. Because the window starts at 00:00, nothing is missed between 23:59
+and 00:00 — the first check in the new day sees `hour = 0`.
