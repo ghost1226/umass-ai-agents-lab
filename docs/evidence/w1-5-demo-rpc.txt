@@ -1,0 +1,12 @@
+  > /bedtime-test (manual preview)
+  [notify +3.0s] It is after midnight. Consider saving your work and getting some sleep.
+  [notify +30.2s] It is after midnight. Consider saving your work and getting some sleep.
+
+=== demo summary ===
+simulated clock start: 2026-01-14T23:59:58
+/bedtime-test registered: true
+notifications: 2
+  1. It is after midnight. Consider saving your work and getting some sleep.
+  2. It is after midnight. Consider saving your work and getting some sleep.
+manual previews: 1
+automatic reminders: 1

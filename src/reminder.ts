@@ -20,6 +20,8 @@ import {
   type ReminderScheduler,
 } from "./reminder-scheduler.ts";
 
+import { createNowProvider } from "./demo-clock.ts";
+
 export default function reminder(pi: ExtensionAPI) {
   // Session-scoped. Recreated on every session_start so a reload never reuses an
   // old context; cleared on session_shutdown.
@@ -27,8 +29,8 @@ export default function reminder(pi: ExtensionAPI) {
 
   function buildScheduler(ctx: ExtensionContext): ReminderScheduler {
     return createReminderScheduler({
-      // Read the real clock on every check.
-      now: () => new Date(),
+      // Real clock normally; advances from BEDTIME_DEMO_TIME when set (W1-5).
+      now: createNowProvider(),
       // Deliver inside Pi's UI; never a model call.
       notify: (message) => ctx.ui.notify(message, "info"),
       setInterval,
