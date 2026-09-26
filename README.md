@@ -48,22 +48,32 @@ pi --extension ./src/reminder.ts
 pi --extension ./src/ask-user.ts
 ```
 
-## Acceptance criteria (fill in — W1-1)
+## Acceptance criteria (W1-1)
 
-<!--
-TODO(W1-1): paste the reminder acceptance criteria from the instructor handout
-and mirror them in a GitHub issue. Keep one source of truth and link the issue
-number here.
--->
+Tracked in issue #1. This section and the issue are kept in sync.
 
-- [ ] TODO: local time policy 00:00 (inclusive) to 06:00 (exclusive)
-- [ ] TODO: visible notification; user may continue
-- [ ] TODO: automatic delivery within one minute of midnight while idle
-- [ ] TODO: on startup inside the window, remind
-- [ ] TODO: at most one automatic reminder per local calendar date per session
-- [ ] TODO: `/bedtime-test` previews without changing automatic state
-- [ ] TODO: timer cleared on shutdown/reload; no duplicate timers
-- [ ] TODO: no model calls, no tool blocking, no shutdown; skip in non-interactive modes
+- [ ] **Time policy.** Use the local time zone of the machine running Pi.
+      Late-night hours are 00:00 (inclusive) to 06:00 (exclusive).
+- [ ] **Visible message.** Show something like “It is after midnight. Consider
+      saving your work and getting some sleep.” The user may continue working.
+- [ ] **Automatic delivery.** While interactive Pi stays open and the computer
+      is awake, show the reminder within one minute after midnight, with no
+      further user prompt.
+- [ ] **Startup inside the window.** If Pi starts between 00:00 and 06:00, show
+      the reminder on startup. If execution resumes after a pause during that
+      window, show it on the next check.
+- [ ] **No duplicates.** At most one automatic reminder per local calendar date
+      within the current extension session. Repeated prompts and timer checks
+      must not produce duplicates.
+- [ ] **Fresh session may remind again.** A new session or extension reload may
+      remind again. Persistence across restarts is optional. Separate Pi
+      processes keep separate state.
+- [ ] **Manual preview.** `/bedtime-test` previews the message without changing
+      the automatic reminder state.
+- [ ] **Clean lifecycle.** Stop the timer on session shutdown. Reloading must not
+      accumulate active timers or reuse an old session context.
+- [ ] **No side effects.** No extra model calls, no tool blocking, no terminating
+      Pi. Skip both notification and timer creation in non-interactive operation.
 
 ## The one idea that matters
 

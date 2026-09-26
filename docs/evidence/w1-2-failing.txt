@@ -1,0 +1,35 @@
+# W1-2 failing output (before implementation)
+# Fri Sep 25 21:23:35 EDT 2026
+
+✔ example: a pure function is easy to test (0.321041ms)
+✔ example: a fake clock is just a Date we construct (0.508625ms)
+✖ 23:59, no prior reminder -> no reminder (0.717667ms)
+✖ 00:00, no reminder for this date -> remind (0.05525ms)
+✖ 00:01, already reminded today -> no duplicate (0.037708ms)
+✖ 05:59, no reminder today -> remind (0.036417ms)
+✖ 06:00 -> no reminder (0.043209ms)
+✖ noon -> no reminder (0.036875ms)
+✖ midnight on the next date -> remind again (0.036708ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 2
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 70.132875
+✖ failing tests:
+✖ 23:59, no prior reminder -> no reminder (0.717667ms)
+  Error: TODO(W1-3): implement shouldRemind
+✖ 00:00, no reminder for this date -> remind (0.05525ms)
+  Error: TODO(W1-3): implement shouldRemind
+✖ 00:01, already reminded today -> no duplicate (0.037708ms)
+  Error: TODO(W1-3): implement shouldRemind
+✖ 05:59, no reminder today -> remind (0.036417ms)
+  Error: TODO(W1-3): implement shouldRemind
+✖ 06:00 -> no reminder (0.043209ms)
+  Error: TODO(W1-3): implement shouldRemind
+✖ noon -> no reminder (0.036875ms)
+  Error: TODO(W1-3): implement shouldRemind
+✖ midnight on the next date -> remind again (0.036708ms)
+  Error: TODO(W1-3): implement shouldRemind
