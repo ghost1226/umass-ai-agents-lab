@@ -1,0 +1,45 @@
+# W1-4 failing output (scheduler, before implementation)
+# Fri Sep 25 22:42:05 EDT 2026
+
+✔ example: a pure function is easy to test (0.331041ms)
+✔ example: a fake clock is just a Date we construct (0.510167ms)
+✔ 23:59, no prior reminder -> no reminder (0.716333ms)
+✔ 00:00, no reminder for this date -> remind (0.059583ms)
+✔ 00:01, already reminded today -> no duplicate (0.045167ms)
+✔ 05:59, no reminder today -> remind (0.04875ms)
+✔ 06:00 -> no reminder (0.042416ms)
+✔ noon -> no reminder (0.037125ms)
+✔ midnight on the next date -> remind again (0.0395ms)
+✖ startup inside the window reminds immediately and schedules a timer (0.92075ms)
+✖ startup outside the window schedules a timer but does not remind (0.061833ms)
+✖ crossing midnight while idle delivers on the next tick, exactly once (0.048208ms)
+✖ the next local date becomes eligible again (0.043542ms)
+✖ a missed window is skipped when time resumes after 06:00 (0.043666ms)
+✖ preview shows the message but does not change automatic state (0.039541ms)
+✖ stop clears the timer and is idempotent (0.039916ms)
+✖ start is idempotent and does not accumulate timers (0.039ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 9
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 78.076041
+✖ failing tests:
+✖ startup inside the window reminds immediately and schedules a timer (0.92075ms)
+  Error: TODO(W1-4): implement createReminderScheduler
+✖ startup outside the window schedules a timer but does not remind (0.061833ms)
+  Error: TODO(W1-4): implement createReminderScheduler
+✖ crossing midnight while idle delivers on the next tick, exactly once (0.048208ms)
+  Error: TODO(W1-4): implement createReminderScheduler
+✖ the next local date becomes eligible again (0.043542ms)
+  Error: TODO(W1-4): implement createReminderScheduler
+✖ a missed window is skipped when time resumes after 06:00 (0.043666ms)
+  Error: TODO(W1-4): implement createReminderScheduler
+✖ preview shows the message but does not change automatic state (0.039541ms)
+  Error: TODO(W1-4): implement createReminderScheduler
+✖ stop clears the timer and is idempotent (0.039916ms)
+  Error: TODO(W1-4): implement createReminderScheduler
+✖ start is idempotent and does not accumulate timers (0.039ms)
+  Error: TODO(W1-4): implement createReminderScheduler

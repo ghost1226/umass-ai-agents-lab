@@ -99,3 +99,22 @@ than the hour alone: at the first check at or after 00:00 the local date has
 already changed, so the new day is eligible while the previous day stays
 exhausted. Because the window starts at 00:00, nothing is missed between 23:59
 and 00:00 — the first check in the new day sees `hour = 0`.
+
+## Scheduler and Pi integration (W1-4)
+
+`src/reminder-scheduler.ts` keeps all decision logic testable by injecting four
+dependencies: `now()`, `notify()`, `setInterval`, and `clearInterval`. The entry
+point in `src/reminder.ts` supplies the real `Date`, `ctx.ui.notify`, and the
+Node timers.
+
+- One `check()` runs the policy against the current time. When it reminds, it
+  writes `lastRemindedDate` **before** notifying, synchronously, so a repeated or
+  delayed tick cannot duplicate.
+- `start()` = one immediate check, then a repeating timer (`DEFAULT_INTERVAL_MS`
+  = 30 s). It is idempotent: a second `start()` does not add a timer.
+- `stop()` is idempotent and clears the handle.
+- `preview()` only notifies; it never touches `lastRemindedDate`.
+- `src/reminder.ts` skips notification and timer creation when `!ctx.hasUI`,
+  stops any previous scheduler before creating a new one on `session_start`, and
+  stops/nulls it on `session_shutdown`. Recreating per session avoids reusing an
+  old context after a reload.
