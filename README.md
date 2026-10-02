@@ -67,6 +67,7 @@ BEDTIME_DEMO_TIME=2026-01-14T23:59:58 node scripts/demo-rpc.mjs
 # Hands-on TUI:
 BEDTIME_DEMO_TIME=2026-01-14T23:59:58 pi --extension ./src/reminder.ts
 # then type: /bedtime-test
+# exit with Ctrl+D
 ```
 
 Full observed output and the reflection are in
