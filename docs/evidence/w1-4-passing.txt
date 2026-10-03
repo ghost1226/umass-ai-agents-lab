@@ -1,0 +1,28 @@
+# W1-4 passing output (scheduler + policy)
+# Fri Sep 25 22:42:29 EDT 2026
+
+✔ example: a pure function is easy to test (0.342333ms)
+✔ example: a fake clock is just a Date we construct (0.534125ms)
+✔ 23:59, no prior reminder -> no reminder (0.727167ms)
+✔ 00:00, no reminder for this date -> remind (0.060042ms)
+✔ 00:01, already reminded today -> no duplicate (0.046042ms)
+✔ 05:59, no reminder today -> remind (0.047416ms)
+✔ 06:00 -> no reminder (0.044125ms)
+✔ noon -> no reminder (0.036583ms)
+✔ midnight on the next date -> remind again (0.042583ms)
+✔ startup inside the window reminds immediately and schedules a timer (0.84125ms)
+✔ startup outside the window schedules a timer but does not remind (0.072541ms)
+✔ crossing midnight while idle delivers on the next tick, exactly once (0.0715ms)
+✔ the next local date becomes eligible again (0.057167ms)
+✔ a missed window is skipped when time resumes after 06:00 (0.059375ms)
+✔ preview shows the message but does not change automatic state (0.056958ms)
+✔ stop clears the timer and is idempotent (0.064667ms)
+✔ start is idempotent and does not accumulate timers (0.050959ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 75.792667

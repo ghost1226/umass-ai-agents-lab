@@ -1,0 +1,16 @@
+# W1-5 startup-after-midnight check (simulated 00:30)
+# Fri Sep 25 22:48:40 EDT 2026
+# Expect an automatic reminder almost immediately, from the session_start check.
+
+  [notify +0.2s] It is after midnight. Consider saving your work and getting some sleep.
+  > /bedtime-test (manual preview)
+  [notify +3.0s] It is after midnight. Consider saving your work and getting some sleep.
+
+=== demo summary ===
+simulated clock start: 2026-01-14T00:30:00
+/bedtime-test registered: true
+notifications: 2
+  1. It is after midnight. Consider saving your work and getting some sleep.
+  2. It is after midnight. Consider saving your work and getting some sleep.
+manual previews: 1
+automatic reminders: 1

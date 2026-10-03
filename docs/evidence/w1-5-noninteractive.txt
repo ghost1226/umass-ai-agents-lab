@@ -1,0 +1,4 @@
+# W1-5 non-interactive startup check
+# Fri Sep 25 22:48:14 EDT 2026
+# ctx.hasUI is false -> session_start returns before any timer is created.
+ok
